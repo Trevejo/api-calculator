@@ -1,2 +1,5 @@
 # api-calculator
-A simple calculator made for learning APIs
+api-calculator is a calculator made with Python using APIs. It calculates simple mathematical expressions.
+
+# Status
+Under development
