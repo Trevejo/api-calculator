@@ -18,9 +18,9 @@ Finally, to run the API use:
 ## Interacting with the API
 The URLs are:
 
-Home - http://0.0.0.0:5000/
-Show calculations history: http://0.0.0.0:5000/results
-Operate: http://0.0.0.0:5000/operate?operation=x*y
+*Home - http://0.0.0.0:5000/
+*Show calculation history: http://0.0.0.0:5000/results
+*Operate: http://0.0.0.0:5000/operate?operation=x*y
 
 ## Operating
 The API can add, subtract, multiply and divide. At the moment, only integers are accepted.
