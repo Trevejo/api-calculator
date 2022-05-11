@@ -1,47 +1,19 @@
-from ast import If
-from datetime import datetime
-
 import flask
-from flask import jsonify, request
+from flask import json, request, render_template
 
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
-
-results = []
 
 @app.route("/", methods=["GET"])
 def home():
-    return "Welcome to Api Calculator!"
+    #json testing
+    data_set = {'Page': 'Home', 'Message': 'Welcome to api calculator homepage!'}
+    json_dump = json.dumps(data_set)
 
-@app.route("/results", methods=["GET"])
-def resultsHistory():
-  return jsonify(results)
+    return json_dump
 
 @app.route("/operate", methods=["GET"])
 def operate():
-    if "operation" in request.args:
-        operation = request.args["operation"]
-    else:
-       return dict(error="Calculation Error", message="Invalid operation")
-    result = 0
-    try:
-        if "+" in operation:
-            operatee = operation.split("+")
-            result = int(operatee[0]) + int(operatee[1])
-        if "-" in operation:
-            operatee = operation.split("-")
-            result = int(operatee[0]) - int(operatee[1])
-        if "*" in operation:
-            operatee = operation.split("*")
-            result = int(operatee[0]) * int(operatee[1])
-        if "/" in operation:
-            operatee = operation.split("/")
-            result = int(operatee[0]) / int(operatee[1])
-        response = {"updated_date": datetime.now(), "operation": operation, "result": result}
-        results.append(response)
-        return response
-    except Exception as e:
-        return dict(error="Calculation Error", exception=str(e), message="Review operation parameters and try again")
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
